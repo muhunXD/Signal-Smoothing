@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2024.11.07.12:56:08"
+ outputDirectory="C:/My files/Study Stuff/Cpre 201/Signuy/Kaew Code/db/ip/unnamed/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Cyclone IV E"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="EP4CE22F17C6"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="6"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="clk" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="CLOCK" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="external_interface" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <port name="ADC_SCLK" direction="output" role="SCLK" width="1" />
+   <port name="ADC_CS_N" direction="output" role="CS_N" width="1" />
+   <port name="ADC_DOUT" direction="input" role="DOUT" width="1" />
+   <port name="ADC_DIN" direction="output" role="DIN" width="1" />
+  </interface>
+  <interface name="readings" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <port name="CH0" direction="output" role="CH0" width="12" />
+   <port name="CH1" direction="output" role="CH1" width="12" />
+   <port name="CH2" direction="output" role="CH2" width="12" />
+   <port name="CH3" direction="output" role="CH3" width="12" />
+   <port name="CH4" direction="output" role="CH4" width="12" />
+   <port name="CH5" direction="output" role="CH5" width="12" />
+   <port name="CH6" direction="output" role="CH6" width="12" />
+   <port name="CH7" direction="output" role="CH7" width="12" />
+  </interface>
+  <interface name="reset" kind="reset" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="synchronousEdges" value="DEASSERT" />
+   <port name="RESET" direction="input" role="reset" width="1" />
+  </interface>
+ </perimeter>
+ <entity
+   path=""
+   parameterizationKey="unnamed:1.0:AUTO_CLK_CLOCK_DOMAIN=-1,AUTO_CLK_CLOCK_RATE=-1,AUTO_CLK_RESET_DOMAIN=-1,AUTO_DEVICE=10M50DAF484C7G,AUTO_DEVICE_FAMILY=MAX 10,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1730958966,AUTO_UNIQUE_ID=(altera_up_avalon_adc_mega:18.0:AUTO_CLK_CLOCK_RATE=0,AUTO_DEVICE_FAMILY=MAX 10,board=DE0-Nano,board_rev=Autodetect,max10plldivby=1,max10pllmultby=1,numch=1,numch_=1,sclk_freq=3.2,sys_clk_freq=50,tsclk=16)"
+   instancePathKey="unnamed"
+   kind="unnamed"
+   version="1.0"
+   name="unnamed">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="1730958966" />
+  <parameter name="AUTO_DEVICE" value="10M50DAF484C7G" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <generatedFiles>
+   <file
+       path="C:/My files/Study Stuff/Cpre 201/Signuy/Kaew Code/db/ip/unnamed/unnamed.v"
+       type="VERILOG" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="C:/My files/Study Stuff/Cpre 201/Signuy/Kaew Code/db/ip/unnamed/submodules/altera_up_avalon_adv_adc.v"
+       type="VERILOG" />
+   <file
+       path="C:/My files/Study Stuff/Cpre 201/Signuy/Kaew Code/db/ip/unnamed/submodules/unnamed_adc_mega_0.v"
+       type="VERILOG" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="C:/My files/Study Stuff/Cpre 201/Signuy/Kaew Code/unnamed.qsys" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/altera_up_avalon_adc_mega_hw.tcl" />
+   <file
+       path="C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v" />
+  </childSourceFiles>
+  <messages>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:unnamed "unnamed"</message>
+   <message level="Progress" culprit="min"></message>
+   <message level="Progress" culprit="max"></message>
+   <message level="Progress" culprit="current"></message>
+   <message level="Debug">Transform: CustomInstructionTransform</message>
+   <message level="Debug">No custom instruction connections, skipping transform </message>
+   <message level="Debug" culprit="merlin_custom_instruction_transform"><![CDATA[After transform: <b>1</b> modules, <b>0</b> connections]]></message>
+   <message level="Debug">Transform: MMTransform</message>
+   <message level="Debug">Transform: InterruptMapperTransform</message>
+   <message level="Debug">Transform: InterruptSyncTransform</message>
+   <message level="Debug">Transform: InterruptFanoutTransform</message>
+   <message level="Debug">Transform: AvalonStreamingTransform</message>
+   <message level="Debug">Transform: ResetAdaptation</message>
+   <message level="Debug" culprit="unnamed"><![CDATA["<b>unnamed</b>" reuses <b>altera_up_avalon_adc_mega</b> "<b>submodules/unnamed_adc_mega_0</b>"]]></message>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:altera_up_avalon_adc_mega "submodules/unnamed_adc_mega_0"</message>
+   <message level="Info" culprit="adc_mega_0">Starting Generation of ADC Controller for DE-series Board</message>
+   <message level="Info" culprit="adc_mega_0">C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: C:/intelfpga_lite/20.1/quartus\bin64/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v --source=C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v --source=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0003_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 0.492s</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: C:/intelfpga_lite/20.1/quartus\bin64/quartus_map.exe not_a_project --generate_hdl_interface=C:\Users\muhun\AppData\Local\Temp\alt0034_295187017550683715.dir\0002_sopcgen\unnamed_adc_mega_0.v --source=C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v --source=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0004_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=unnamed_adc_mega_0 "--set=HDL_INTERFACE_INSTANCE_PARAMETERS=board=S\"DE0-Nano\";board_rev=S\"Autodetect\";tsclk=D\"16\";numch=D\"1\";max10pllmultby=D\"1\";max10plldivby=D\"1\";" --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 0.495s</message>
+   <message level="Info" culprit="adc_mega_0"><![CDATA["<b>unnamed</b>" instantiated <b>altera_up_avalon_adc_mega</b> "<b>adc_mega_0</b>"]]></message>
+  </messages>
+ </entity>
+ <entity
+   path="submodules/"
+   parameterizationKey="altera_up_avalon_adc_mega:18.0:AUTO_CLK_CLOCK_RATE=0,AUTO_DEVICE_FAMILY=MAX 10,board=DE0-Nano,board_rev=Autodetect,max10plldivby=1,max10pllmultby=1,numch=1,numch_=1,sclk_freq=3.2,sys_clk_freq=50,tsclk=16"
+   instancePathKey="unnamed:.:adc_mega_0"
+   kind="altera_up_avalon_adc_mega"
+   version="18.0"
+   name="unnamed_adc_mega_0">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
+  <parameter name="max10plldivby" value="1" />
+  <parameter name="sys_clk_freq" value="50" />
+  <parameter name="tsclk" value="16" />
+  <parameter name="sclk_freq" value="3.2" />
+  <parameter name="numch_" value="1" />
+  <parameter name="board_rev" value="Autodetect" />
+  <parameter name="max10pllmultby" value="1" />
+  <parameter name="board" value="DE0-Nano" />
+  <parameter name="numch" value="1" />
+  <generatedFiles>
+   <file
+       path="C:/My files/Study Stuff/Cpre 201/Signuy/Kaew Code/db/ip/unnamed/submodules/altera_up_avalon_adv_adc.v"
+       type="VERILOG" />
+   <file
+       path="C:/My files/Study Stuff/Cpre 201/Signuy/Kaew Code/db/ip/unnamed/submodules/unnamed_adc_mega_0.v"
+       type="VERILOG" />
+  </generatedFiles>
+  <childGeneratedFiles/>
+  <sourceFiles>
+   <file
+       path="C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/altera_up_avalon_adc_mega_hw.tcl" />
+   <file
+       path="C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="unnamed" as="adc_mega_0" />
+  <messages>
+   <message level="Debug" culprit="unnamed">queue size: 0 starting:altera_up_avalon_adc_mega "submodules/unnamed_adc_mega_0"</message>
+   <message level="Info" culprit="adc_mega_0">Starting Generation of ADC Controller for DE-series Board</message>
+   <message level="Info" culprit="adc_mega_0">C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: C:/intelfpga_lite/20.1/quartus\bin64/quartus_map.exe not_a_project --generate_hdl_interface=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v --source=C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v --source=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0003_sopcqmap/ --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 0.492s</message>
+   <message level="Debug">set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files</message>
+   <message level="Debug">Command: C:/intelfpga_lite/20.1/quartus\bin64/quartus_map.exe not_a_project --generate_hdl_interface=C:\Users\muhun\AppData\Local\Temp\alt0034_295187017550683715.dir\0002_sopcgen\unnamed_adc_mega_0.v --source=C:/intelfpga_lite/20.1/ip/altera/university_program/input_output/altera_up_avalon_adc/hdl/altera_up_avalon_adv_adc.v --source=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0002_sopcgen/unnamed_adc_mega_0.v --set=HDL_INTERFACE_OUTPUT_PATH=C:/Users/muhun/AppData/Local/Temp/alt0034_295187017550683715.dir/0004_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=unnamed_adc_mega_0 "--set=HDL_INTERFACE_INSTANCE_PARAMETERS=board=S\"DE0-Nano\";board_rev=S\"Autodetect\";tsclk=D\"16\";numch=D\"1\";max10pllmultby=D\"1\";max10plldivby=D\"1\";" --ini=disable_check_quartus_compatibility_qsys_only=on</message>
+   <message level="Debug">Command took 0.495s</message>
+   <message level="Info" culprit="adc_mega_0"><![CDATA["<b>unnamed</b>" instantiated <b>altera_up_avalon_adc_mega</b> "<b>adc_mega_0</b>"]]></message>
+  </messages>
+ </entity>
+</deploy>

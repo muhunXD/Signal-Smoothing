@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Fri Nov 08 15:54:05 2024
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : signalProj
+Top-level Entity Name : signalProj02
+Family : MAX 10
+Total logic elements : 2,380
+    Total combinational functions : 1,108
+    Dedicated logic registers : 1,393
+Total registers : 1393
+Total pins : 13
+Total virtual pins : 0
+Total memory bits : 768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 1

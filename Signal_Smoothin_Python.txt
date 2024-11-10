@@ -1,0 +1,110 @@
+import serial
+import time
+import struct
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Serial port settings
+SERIAL_PORT = 'COM5'  # Change to your port
+BAUD_RATE = 2000000   # Serial communication speed
+TIMEOUT = 1           # Timeout for reading data
+
+# Data acquisition settings
+SAMPLE_RATE = 4000    # ADC sampling rate
+BUFFER_SIZE = 1024    # Block size of data
+ADC_MAX_VALUE = 4095  # Max ADC value for 12-bit
+V_REF = 3.3           # ADC reference voltage
+
+# Scaling factor to fit the display range of -4 to 4
+scale_factor = 4 / 50000  # Adjust this if your max amplitude changes
+
+# Function to read samples from Serial
+def read_samples(num_samples):
+    data = bytearray()
+    while len(data) < num_samples * 2:
+        chunk = ser.read(num_samples * 2 - len(data))
+        if chunk:
+            data.extend(chunk)
+        else:
+            time.sleep(0.01)
+    return data
+
+# Moving Average Filter function
+def moving_average(data, window_size=100):
+    return np.convolve(data, np.ones(window_size) / window_size, mode='valid')
+
+# Open Serial connection
+ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=TIMEOUT)
+if not ser.is_open:
+    print("Failed to open port")
+    exit()
+
+try:
+    print('Starting data acquisition and plotting... Press Ctrl+C to stop')
+    plt.ion()
+    fig, (ax_raw, ax_smooth) = plt.subplots(2, 1, figsize=(10, 8))
+    plt.subplots_adjust(hspace=0.3)
+
+    # Set up plot
+    line_raw, = ax_raw.plot([], [], label="Raw Signal", color="blue")
+    line_smooth, = ax_smooth.plot([], [], label="Smoothed Signal", color="green")
+
+    # Set axis labels and limits
+    ax_raw.set_title('Raw Signal from Oscilloscope')
+    ax_raw.set_xlabel('Time (seconds)')
+    ax_raw.set_ylabel('Voltage (V)')
+    ax_raw.set_xlim(0, BUFFER_SIZE / SAMPLE_RATE)
+    ax_raw.set_ylim(-1, 4)  # Display range set to -1 to 4
+
+    ax_smooth.set_title('Smoothed Signal (Moving Average)')
+    ax_smooth.set_xlabel('Time (seconds)')
+    ax_smooth.set_ylabel('Voltage (V)')
+    ax_smooth.set_xlim(0, BUFFER_SIZE / SAMPLE_RATE)
+    ax_smooth.set_ylim(-1, 4)  # Display range set to -1 to 4
+
+    # Add grid lines similar to an oscilloscope
+    for ax in [ax_raw, ax_smooth]:
+        ax.grid(which='major', linestyle='-', linewidth='0.5', color='grey')  # Major grid lines
+        ax.grid(which='minor', linestyle=':', linewidth='0.3', color='lightgrey')  # Minor grid lines
+        ax.minorticks_on()  # Enable minor ticks for finer grid lines
+
+    while plt.fignum_exists(fig.number):  # Check if plot window is open
+        # Read data from Serial
+        raw_data = read_samples(BUFFER_SIZE)
+
+        # Convert raw data to signed integer signal
+        samples = []
+        for i in range(0, len(raw_data), 2):
+            sample = struct.unpack('>H', raw_data[i:i+2])[0]
+            samples.append(sample)
+        samples = np.array(samples)
+
+        # Apply moving average smoothing
+        smoothed_samples = moving_average(samples, window_size=100)
+
+        # Scale samples for display
+        scaled_samples = samples * scale_factor
+        scaled_smoothed_samples = smoothed_samples * scale_factor
+
+        # Create time axis
+        t = np.arange(len(scaled_samples)) / SAMPLE_RATE
+        t_smoothed = np.arange(len(scaled_smoothed_samples)) / SAMPLE_RATE
+
+        # Update raw signal plot
+        line_raw.set_data(t, scaled_samples)
+        ax_raw.relim()
+        ax_raw.autoscale_view()
+
+        # Update smoothed signal plot
+        line_smooth.set_data(t_smoothed, scaled_smoothed_samples)
+        ax_smooth.relim()
+        ax_smooth.autoscale_view()
+
+        plt.draw()
+        plt.pause(0.001)
+
+except KeyboardInterrupt:
+    print("Data acquisition stopped")
+finally:
+    ser.close()
+    print("Serial port closed")
